@@ -3,7 +3,9 @@ opsworks-php55-apache24
 
 install php55 and apache 2.4 on opsworks Amazon Linux 64-bit (tested with chef 11.10)
 
-To use:
+== To use ==
+
+Create a Opsworks stack, and enable custom cookbooks. Use this repo (or a fork of it)
 
 Create a custom Layer in Opsworks
 
