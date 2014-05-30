@@ -6,7 +6,7 @@ version     "1.0.0"
 
 depends "dependencies"
 depends "scm_helper"
-depends "apache2", "< 1.0.0"
+depends "apache2"
 depends "mod_php5_apache2"
 depends "nginx"
 depends "ssh_users"
