@@ -25,3 +25,4 @@ node[:deploy].each do |application, deploy|
   end
 end
 
+execute "service httpd restart"
