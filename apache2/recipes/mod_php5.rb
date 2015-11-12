@@ -29,7 +29,7 @@ when 'rhel'
 
   package 'php package' do
     if node['platform_version'].to_f < 6.0
-      package_name 'php53'
+      package_name 'php55'
     else
       package_name 'php'
     end

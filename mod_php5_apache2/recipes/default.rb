@@ -8,7 +8,7 @@ bad_packages.each do |pkg|
   end
 end
 
-execute "yum install httpd24"
+# execute "yum install httpd24"
 
 node[:mod_php5_apache2][:packages].each do |pkg|
   package pkg do
