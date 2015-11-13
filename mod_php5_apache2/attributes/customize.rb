@@ -24,22 +24,33 @@ case node[:platform_family]
 when 'rhel'
   packages = [
     'php55',
-    'php55-xml',
     'php55-common',
-    'php55-xmlrpc',
-    'php55-devel',
     'php55-gd',
     'php55-cli',
-    'php-pear-Auth-SASL',
     'php55-mysqlnd',
     'php55-mcrypt',
-    'php55-pecl-memcache',
-    'php-pear',
-    'php-pear-XML-Parser',
-    'php-pear-Mail-Mime',
-    'php-pear-DB',
-    'php-pear-HTML-Common'
+    'php55-pecl-memcached'
   ]
 end
+
+# when 'rhel'
+#   packages = [
+#     'php55'
+#     'php55-xml',
+#     'php55-common',
+#     'php55-xmlrpc',
+#     'php55-devel',
+#     'php55-gd',
+#     'php55-cli',
+#     'php-pear-Auth-SASL',
+#     'php55-mysqlnd',
+#     'php55-mcrypt',
+#     'php55-pecl-memcache',
+#     'php-pear',
+#     'php-pear-XML-Parser',
+#     'php-pear-Mail-Mime',
+#     'php-pear-DB',
+#     'php-pear-HTML-Common'
+#   ]
 
 normal[:mod_php5_apache2][:packages] = packages
