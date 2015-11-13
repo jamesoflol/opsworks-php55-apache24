@@ -56,14 +56,14 @@ KeepAliveTimeout <%= node['apache']['keepalivetimeout'] %>
 # MaxSpareServers: maximum number of server processes which are kept spare
 # MaxClients: maximum number of server processes allowed to start
 # MaxRequestsPerChild: maximum number of requests a server process serves
-<IfModule mpm_prefork_module>
-    StartServers          <%= node['apache']['prefork']['startservers'] %>
-    MinSpareServers       <%= node['apache']['prefork']['minspareservers'] %>
-    MaxSpareServers       <%= node['apache']['prefork']['maxspareservers'] %>
-    ServerLimit           <%= node['apache']['prefork']['serverlimit'] %>
-    MaxClients            <%= node['apache']['prefork']['maxclients'] %>
-    MaxRequestsPerChild   <%= node['apache']['prefork']['maxrequestsperchild'] %>
-</IfModule>
+# <IfModule mpm_prefork_module>
+#    StartServers          <%= node['apache']['prefork']['startservers'] %>
+#    MinSpareServers       <%= node['apache']['prefork']['minspareservers'] %>
+#    MaxSpareServers       <%= node['apache']['prefork']['maxspareservers'] %>
+#    ServerLimit           <%= node['apache']['prefork']['serverlimit'] %>
+#    MaxClients            <%= node['apache']['prefork']['maxclients'] %>
+#    MaxRequestsPerChild   <%= node['apache']['prefork']['maxrequestsperchild'] %>
+# </IfModule>
 
 # worker MPM
 # StartServers: initial number of server processes to start
@@ -72,15 +72,15 @@ KeepAliveTimeout <%= node['apache']['keepalivetimeout'] %>
 # MaxSpareThreads: maximum number of worker threads which are kept spare
 # ThreadsPerChild: constant number of worker threads in each server process
 # MaxRequestsPerChild: maximum number of requests a server process serves
-<IfModule mpm_worker_module>
-    StartServers          <%= node['apache']['worker']['startservers'] %>
-    ServerLimit           <%= node['apache']['worker']['serverlimit'] %>
-    MaxClients            <%= node['apache']['worker']['maxclients'] %>
-    MinSpareThreads       <%= node['apache']['worker']['minsparethreads'] %>
-    MaxSpareThreads       <%= node['apache']['worker']['maxsparethreads'] %>
-    ThreadsPerChild       <%= node['apache']['worker']['threadsperchild'] %>
-    MaxRequestsPerChild   <%= node['apache']['worker']['maxrequestsperchild'] %>
-</IfModule>
+# <IfModule mpm_worker_module>
+#    StartServers          <%= node['apache']['worker']['startservers'] %>
+#    ServerLimit           <%= node['apache']['worker']['serverlimit'] %>
+#    MaxClients            <%= node['apache']['worker']['maxclients'] %>
+#    MinSpareThreads       <%= node['apache']['worker']['minsparethreads'] %>
+#    MaxSpareThreads       <%= node['apache']['worker']['maxsparethreads'] %>
+#    ThreadsPerChild       <%= node['apache']['worker']['threadsperchild'] %>
+#    MaxRequestsPerChild   <%= node['apache']['worker']['maxrequestsperchild'] %>
+# </IfModule>
 
 User <%= node['apache']['user'] %>
 Group <%= node['apache']['group'] %>
@@ -233,6 +233,9 @@ LogFormat "%{User-agent}i" agent
 
 # Include generic snippets of statements
 Include <%= node['apache']['dir'] %>/conf.d/*.conf
+
+# Include modules (most of these are already loaded but MPM isn't for some reason)
+IncludeOptional conf.modules.d/*.conf
 
 # Include the virtual host configurations:
 Include <%= node['apache']['dir'] %>/sites-enabled/
