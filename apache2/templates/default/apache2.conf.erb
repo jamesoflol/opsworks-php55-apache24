@@ -8,13 +8,13 @@ ServerRoot "<%= node['apache']['dir'] %>"
 #
 # The accept serialization lock file MUST BE STORED ON A LOCAL DISK.
 #
-<% if %w[debian].include?(node['platform_family']) -%>
-LockFile /var/lock/apache2/accept.lock
-<% elsif %w[freebsd].include?(node['platform_family']) -%>
-LockFile /var/log/accept.lock
-<% else %>
-LockFile logs/accept.lock
-<% end -%>
+# <% if %w[debian].include?(node['platform_family']) -%>
+# LockFile /var/lock/apache2/accept.lock
+# <% elsif %w[freebsd].include?(node['platform_family']) -%>
+# LockFile /var/log/accept.lock
+# <% else %>
+# LockFile logs/accept.lock
+# <% end -%>
 
 #
 # PidFile: The file in which the server should record its process
@@ -215,7 +215,7 @@ LogFormat "%{User-agent}i" agent
 #    ErrorDocument 401 /error/HTTP_UNAUTHORIZED.html.var
 #    ErrorDocument 403 /error/HTTP_FORBIDDEN.html.var
 #    ErrorDocument 404 /error/HTTP_NOT_FOUND.html.var
-#    ErrorDocument 405 /error/HTTP_METHOD_NOT_ALLOWED.html.var
+#    ErrorDocument 405 /error/HTTP_METhtml.var
 #    ErrorDocument 408 /error/HTTP_REQUEST_TIME_OUT.html.var
 #    ErrorDocument 410 /error/HTTP_GONE.html.var
 #    ErrorDocument 411 /error/HTTP_LENGTH_REQUIRED.html.var
