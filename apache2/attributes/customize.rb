@@ -10,4 +10,5 @@
 #
 #normal[:apache][:contact] = 'you@your-site.com'
 #normal[:apache][:timeout] = 60
+normal[:apache][:version] = '2.4'
 normal['apache']['package']     = 'httpd24'

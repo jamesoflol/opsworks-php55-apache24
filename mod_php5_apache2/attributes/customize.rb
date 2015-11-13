@@ -23,6 +23,7 @@ packages = []
 case node[:platform_family]
 when 'rhel'
   packages = [
+    'php55',
     'php55-xml',
     'php55-common',
     'php55-xmlrpc',
