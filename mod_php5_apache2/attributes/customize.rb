@@ -25,11 +25,16 @@ when 'rhel'
   packages = [
     'php55',
     'php55-common',
+    'php55-mysqlnd',
     'php55-gd',
     'php55-cli',
-    'php55-mysqlnd',
     'php55-mcrypt',
-    'php55-pecl-memcached'
+    'php55-pecl-memcached',
+    'php55-mbstring',
+    'php55-opcache',
+    'php55-soap',
+    'php55-xmlrpc',
+    'php55-intl'
   ]
 end
 
