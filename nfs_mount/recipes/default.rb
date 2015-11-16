@@ -1,4 +1,12 @@
-execute "mkdir -p /mnt/nfs/moodledata"
-execute "mount memcached1:/moodledata /mnt/nfs/moodledata"
-execute "sudo chown deploy:apache /mnt/nfs/moodledata"
-execute "sudo chmod 775 /mnt/nfs/moodledata"
+execute "mkdir -p /mnt/nfs/moodledata" do
+  ignore_failure true
+end
+execute "mount memcached1:/moodledata /mnt/nfs/moodledata" do
+  ignore_failure true
+end
+execute "sudo chown deploy:apache /mnt/nfs/moodledata" do
+  ignore_failure true
+end
+execute "sudo chmod 775 /mnt/nfs/moodledata" do
+  ignore_failure true
+end
