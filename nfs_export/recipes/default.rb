@@ -8,3 +8,7 @@ nfs_export "/vol/moodledata" do
   sync true
   options ['no_root_squash','no_subtree_check']
 end
+
+service "nfs" do
+  action :start
+end
