@@ -3,6 +3,13 @@
 # execute "sudo chown deploy:apache /mnt/nfs/moodledata"
 # execute "sudo chmod 775 /mnt/nfs/moodledata"
 
+directory "/mnt/nfs/moodledata" do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
+
 mount "/mnt/nfs/moodledata" do
   device "memcached1:/vol/moodledata"
   fstype "nfs"
