@@ -14,6 +14,7 @@ end
 
 mount "/mnt/nfs/moodledata" do
   #device node[:opsworks][:layers][:memcached][:instances][0] + ":/vol/moodledata"
+  device deploy[:memcached][:host] + ":/vol/moodledata"
   device "memcached1:/vol/moodledata"
   fstype "nfs"
   options "rw"
