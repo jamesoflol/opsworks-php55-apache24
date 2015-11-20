@@ -6,7 +6,7 @@ directory "/testj" do
 end
 
 file "/testj/1" do
-  content deploy[:memcached]['moodle'][:host]
+  content node["deploy"]["moodle"]["memcached"]["host"]
   mode '0777'
   owner 'root'
   group 'root'
@@ -28,7 +28,7 @@ end
 
 mount "/mnt/nfs/moodledata" do
   #device node[:opsworks][:layers][:memcached][:instances][0] + ":/vol/moodledata"
-  device deploy[:memcached]['moodle'][:host] + ":/vol/moodledata"
+  device node["deploy"]["appshortname"]["memcached"]["host"] + ":/vol/moodledata"
   device "memcached1:/vol/moodledata"
   fstype "nfs"
   options "rw"
