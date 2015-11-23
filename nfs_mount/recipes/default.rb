@@ -22,10 +22,8 @@ node["opsworks"]["layers"]["memcached"]["instances"].each do |x,memcached_instan
 end
 
 mount "/mnt/nfs/moodledata" do
-  #device node["deploy"]["moodle"]["memcached"]["host"] + ":/vol/moodledata"
   device memcached_ip + ":/vol/moodledata"
   device "memcached1:/vol/moodledata"
   fstype "nfs"
   options "rw"
-  # action [:mount, :enable] # uncommenting this will force unmount+remount
 end
