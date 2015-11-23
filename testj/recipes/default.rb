@@ -6,7 +6,7 @@ directory "/testj" do
 end
 
 file "/testj/test" do
-  content 'hi'
+  content node.to_json
   mode '0777'
   owner 'root'
   group 'root'
