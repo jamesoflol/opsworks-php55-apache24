@@ -5,8 +5,16 @@ directory "/testj" do
   action :create
 end
 
-file "/testj/test" do
-  content node["opsworks"]["layers"]["memcached"]["instances"].to_json
+memcached_ip = ""
+node["opsworks"]["layers"]["memcached"]["instances"].each do |x,memcached_instance|
+  if memcached_instance["status"] == "online"
+    memcached_ip = memcached_instance["ip"]
+    break
+  end
+end
+
+file "/testj/test5" do
+  content memcached_ip
   mode '0777'
   owner 'root'
   group 'root'
