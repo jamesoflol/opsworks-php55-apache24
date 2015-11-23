@@ -13,17 +13,17 @@ directory "/mnt/nfs/moodledata" do
 end
 
 # find the first working instance of memcached layer - memcahced server also hosting nfs share
-memcached_ip = ""
-node["opsworks"]["layers"]["memcached"]["instances"].each do |x,memcached_instance|
-  if memcached_instance["status"] == "online"
-    memcached_ip = memcached_instance["ip"]
-    break
-  end
-end
+# memcached_ip = ""
+# node["opsworks"]["layers"]["memcached"]["instances"].each do |x,memcached_instance|
+#   if memcached_instance["status"] == "online"
+#     memcached_ip = memcached_instance["ip"]
+#     break
+#   end
+# end
 
 mount "/mnt/nfs/moodledata" do
-  device memcached_ip + ":/vol/moodledata"
-  device "memcached1:/vol/moodledata"
+  # device memcached_ip + ":/vol/moodledata"
+  device node["deploy"]["moodle"]["memcached"]["host"] + ":/vol/moodledata"
   fstype "nfs"
   options "rw"
   # action [:mount, :enable] # uncommenting this will force unmount+remount
