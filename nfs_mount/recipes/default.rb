@@ -26,4 +26,5 @@ mount "/mnt/nfs/moodledata" do
   device "memcached1:/vol/moodledata"
   fstype "nfs"
   options "rw"
+  # action [:mount, :enable] # uncommenting this will force unmount+remount
 end
