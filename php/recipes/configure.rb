@@ -4,6 +4,15 @@ node[:deploy].each do |application, deploy|
     next
   end
 
+  # find the first working instance of memcached layer - memcahced server also hosting nfs share
+  memcached_ip = ""
+  node["opsworks"]["layers"]["memcached"]["instances"].each do |x,memcached_instance|
+    if memcached_instance["status"] == "online"
+      memcached_ip = memcached_instance["ip"]
+      break
+    end
+  end
+
   # write out opsworks.php
   template "#{deploy[:deploy_to]}/shared/config/opsworks.php" do
     cookbook 'php'
@@ -13,7 +22,7 @@ node[:deploy].each do |application, deploy|
     group deploy[:group]
     variables(
       :database => deploy[:database],
-      :memcached => deploy[:memcached],
+      :memcached => { "host" => memcached_ip, deploy[:memcached][:port] },
       :layers => node[:opsworks][:layers],
       :stack_name => node[:opsworks][:stack][:name]
     )
